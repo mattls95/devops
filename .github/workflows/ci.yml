@@ -39,9 +39,9 @@ jobs:
               run: pytest
 
             # Docker build
-            - name: Docker Build Image .
-              run: docker build -t devops:latest
-
+            - name: Docker Build Image
+              run: docker build -t devops:latest .
+              
             # Docker run
             - name: Run Docker Container
               run: docker run --rm devops
