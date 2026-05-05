@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+var/
+sdist/
+wheels/
+pip-wheel-metadata/
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+# Data
+data/in/*
+data/out/*
+!data/in/.gitkeep
+!data/out/.gitkeep
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

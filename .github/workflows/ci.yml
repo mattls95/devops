@@ -1,0 +1,47 @@
+name: Python CI
+
+on:
+    push:
+        branches: [ main ]
+    pull_request:
+        branches: [ main ]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v6
+
+            - name: Set up Python
+              uses: actions/setup-python@v6
+              with:
+                python-version: '3.12'
+            
+            - name: Install dependencies
+              run: |
+                pip install --upgrade pip
+                pip install -r requirements.txt
+
+            # Linting
+            - name: Check formatting (black)
+              run: black --check .
+
+            - name: Check imports (isort)
+              run: isort --check-only .
+            
+            - name: Lint (flake8)
+              run: flake8 .
+
+            # Tests
+            - name: Run tests
+              run: pytest
+
+            # Docker build
+            - name: Docker Build Image
+              run: docker build -t devops:latest
+
+            # Docker run
+            - name: Run Docker Container
+              run: docker run --rm devops
